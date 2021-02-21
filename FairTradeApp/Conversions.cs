@@ -123,5 +123,54 @@ namespace FairTradeApp
 
 			return 1.0f;
 		}
-	}
+
+		public static string ConvertImage(string name)
+		{
+			if (name == "Cane sugar")
+				return "sugar.png";
+			else if (name == "Amaranth")
+				return "amaranth.png";
+			else if (name == "Rice")
+				return "rice.png";
+			else if (name == "Cocoa")
+				return "cocoa.png";
+			else if (name == "Seed cotton")
+				return "cotton.png";
+			else if (name == "Apple")
+				return "apple.png";
+			else if (name == "Avacado")
+				return "avacado.png";
+			else if (name == "Apple")
+				return "apple.png";
+			else if (name == "Banana" || name == "Baby Banana - coastal" || name == "Baby Banana - mountain")
+				return "banana.png";
+			else if (name == "Blueberry")
+				return "blueberry.png";
+			else if (name == "Cherry")
+				return "cherry.png";
+			else if (name == "Blueberry")
+				return "blueberry.png";
+			else if (name == "Grapefruit  (Citrus x paradis)")
+				return "grpefruit.png";
+			else if (name == "Lemon")
+				return "lemon.png";
+			else if (name == "Lime")
+				return "lime.png";
+			else if (name == "Mango")
+				return "mango.png";
+			else if (name == "Pineapple")
+				return "pineapple.png";
+			else if (name == "Table Grape" || name == "Wine grape")
+				return "grape.png";
+			else if (name == "Cashew nut" || name == "Cashew nut; raw")
+				return "cashew.png";
+			else if (name == "Camellia")
+				return "camellia.png";
+			else if (name == "Acai")
+				return "acai.png";
+			else
+				return "loading";
+
+		}
+		}
 }
