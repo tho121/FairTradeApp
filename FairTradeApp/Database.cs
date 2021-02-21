@@ -215,6 +215,88 @@ namespace FairTradeApp
 			return rows;
 		}
 
-	}
+		public List<string> GetAllProductCategories()
+		{
+			List<string> categories = new List<string>();
 
+			for(int i = 0; i < productCategoryList.Count; ++i)
+			{
+				var c = productCategoryList[i];
+
+				if (categories.Contains(c))
+				{
+					continue;
+				}
+				else
+				{
+					categories.Add(c);
+				}
+			}
+
+			return categories;
+		}
+
+		public List<string> GetAllProductTypes()
+		{
+			List<string> types = new List<string>();
+
+			for (int i = 0; i < productTypeList.Count; ++i)
+			{
+				var t = productTypeList[i];
+
+				if (types.Contains(t))
+				{
+					continue;
+				}
+				else
+				{
+					types.Add(t);
+				}
+			}
+
+			return types;
+		}
+
+		public List<string> GetAllProductForms()
+		{
+			List<string> forms = new List<string>();
+
+			for (int i = 0; i < productFormList.Count; ++i)
+			{
+				var f = productFormList[i];
+
+				if (forms.Contains(f))
+				{
+					continue;
+				}
+				else
+				{
+					forms.Add(f);
+				}
+			}
+
+			return forms;
+		}
+
+		public List<string> GetAllProductCountries()
+		{
+			List<string> countries = new List<string>();
+
+			for (int i = 0; i < productCountryList.Count; ++i)
+			{
+				var c = productCountryList[i];
+
+				if (countries.Contains(c))
+				{
+					continue;
+				}
+				else
+				{
+					countries.Add(c);
+				}
+			}
+
+			return countries;
+		}
+	}
 }
