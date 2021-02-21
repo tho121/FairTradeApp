@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace FairTradeApp.ViewModels
 {
-	public class AboutViewModel : BaseViewModel
+	public class ProductViewModel : BaseViewModel
 	{
-		public AboutViewModel()
+		public ProductViewModel()
 		{
 			Product = "Banana";
 			Title = "Fair Trade App!!";
