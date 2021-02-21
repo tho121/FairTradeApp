@@ -78,15 +78,15 @@ namespace FairTradeApp
 			}
 			else if (rate == "SPO / HL")
 			{
-				return 1.26f / 1000.0f;
+				return 1.0f / 1.0f;
 			}
 			else if (rate == "EXW")
 			{
-				return 1.26f / 1000.0f;
+				return 1.0f / 1.0f;
 			}
 			else if (rate == "FOB")
 			{
-				return 1.26f / 1000.0f;
+				return 1.0f / 1.0f;
 			}
 			else if (rate == "USD/40.8 Kg")
 			{

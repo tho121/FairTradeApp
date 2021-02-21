@@ -7,6 +7,8 @@ namespace FairTradeApp.ViewModels
 {
 	public class ProductViewModel : BaseViewModel
 	{
+		private Database.RowData productData;
+
 		public ProductViewModel()
 		{
 			Product = "Banana";
@@ -14,10 +16,38 @@ namespace FairTradeApp.ViewModels
 			Country = "Panama";
 			Image = "banana.png";
 			Premium = "Premium: 15 %";
-			OpenWebCommand = new Command(async () => await Shell.Current.Navigation.PushModalAsync(new Views.Premium_calc())) ;
+			Amount = 0;
+
+			ConvertCommand = new Command(async () =>
+			{
+				var calc_page = new Views.PremiumCalcPage();
+
+				var rate = 1.0f;
+				if (productData.currencyPerUnit < 0)
+					rate = productData.premium;
+
+				(calc_page.BindingContext as PremiumCalcViewModel).SetData(Amount, rate);
+				await Shell.Current.Navigation.PushModalAsync(calc_page);
+				
+			});
 		}
 
-		public ICommand OpenWebCommand { get; }
+		public void SetData(Database.RowData data)
+		{
+			productData = data;
+
+			Country = data.country;
+			Product = data.type;
+
+			//TODO: set images here!
+
+			if (data.currencyPerUnit < 0)
+				Premium = data.premium.ToString() + " %";
+			else
+				Premium = (data.currencyPerUnit * data.premium).ToString() + " CAD/Kg";
+		}
+
+		public ICommand ConvertCommand { get; }
 
 		string product = string.Empty;
 		public string Product
@@ -47,6 +77,13 @@ namespace FairTradeApp.ViewModels
 		{
 			get { return image; }
 			set { SetProperty(ref image, value); }
+		}
+
+		int amount = 0;
+		public int Amount
+		{
+			get { return amount; }
+			set { SetProperty(ref amount, value); }
 		}
 
 	}
