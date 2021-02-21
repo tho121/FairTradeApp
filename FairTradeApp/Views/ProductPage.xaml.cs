@@ -5,9 +5,9 @@ using Xamarin.Forms.Xaml;
 
 namespace FairTradeApp.Views
 {
-	public partial class AboutPage : ContentPage
+	public partial class ProductPage : ContentPage
 	{
-		public AboutPage()
+		public ProductPage()
 		{
 			InitializeComponent();
 		}
