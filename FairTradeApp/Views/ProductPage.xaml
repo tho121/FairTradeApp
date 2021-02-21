@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FairTradeApp.Views.ProductPage"
              xmlns:vm="clr-namespace:FairTradeApp.ViewModels"
-             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              Title="{Binding Title}">
     
     <ContentPage.BindingContext>
@@ -28,36 +27,15 @@
             </StackLayout>
 
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <zxing:ZXingScannerView x:Name="scanView"
-                                        OnScanResult="scanView_OnScanResult"
-                                        IsScanning="True"
-                                        WidthRequest="300"
-                                        HeightRequest="500"
-                                        VerticalOptions="CenterAndExpand"
-                                        HorizontalOptions="CenterAndExpand"/>
-                <zxing:ZXingDefaultOverlay TopText="Align the barcode within the frame"/>
-				<Picker Title="Product Standard"  
-						ItemsSource="{Binding ProductCategories}"
-						SelectedItem="{Binding SelectedCategory}">
-				</Picker>
-				<Picker Title="Product Name" 
-						ItemsSource="{Binding ProductTypes}"
-						SelectedItem="{Binding SelectedType}"
-						IsEnabled="{Binding IsProductTypeEnabled}">
-				</Picker>
-				<Picker Title="Product Form" 
-						ItemsSource="{Binding ProductForms}"
-						SelectedItem="{Binding SelectedForm}"
-						IsEnabled="{Binding IsProductFormEnabled}">
-				</Picker>
-				<Picker Title="Product country" 
-						HorizontalOptions="FillAndExpand"
-						ItemsSource="{Binding ProductCountries}"
-						SelectedItem="{Binding SelectedCountry}"
-						IsEnabled="{Binding IsProductCountryEnabled}">
-				</Picker>
-
-            </StackLayout>
-        </ScrollView>
-    </Grid>
+                <Label Text="{Binding Product}" FontSize="Title" FontFamily=""  HorizontalTextAlignment="Center"/>
+                <Label Text="{Binding Country}" FontSize="Title" FontFamily="Lobster" HorizontalTextAlignment="Center"/>
+                <Label Text="{Binding Premium}" FontSize="Title" FontFamily="Lobster" HorizontalTextAlignment="Center"/>
+                <Button Margin="0,10,0,0" Text="Purchase"
+                            Command="{Binding OpenWebCommand}"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="White" />
+             </StackLayout>
+           
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
