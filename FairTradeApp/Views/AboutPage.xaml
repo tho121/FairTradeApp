@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FairTradeApp.Views.AboutPage"
              xmlns:vm="clr-namespace:FairTradeApp.ViewModels"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              Title="{Binding Title}">
     
     <ContentPage.BindingContext>
@@ -15,38 +16,48 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
-                </ContentView>
+    <ScrollView>
+        <StackLayout>
+
+            <StackLayout BackgroundColor="#5DB075" VerticalOptions="Fill" HorizontalOptions="Fill">
+                
+                    <ContentView Padding="0,80,0,80" VerticalOptions="FillAndExpand">
+                    <Image Source="{Binding Image}" VerticalOptions="Center" HeightRequest="113" />
+                    </ContentView>
+       
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+                <zxing:ZXingScannerView x:Name="scanView"
+                                        OnScanResult="scanView_OnScanResult"
+                                        IsScanning="True"
+                                        WidthRequest="300"
+                                        HeightRequest="500"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="CenterAndExpand"/>
+                <zxing:ZXingDefaultOverlay TopText="Align the barcode within the frame"/>
+				<Picker Title="Product Standard"  
+						ItemsSource="{Binding ProductCategories}"
+						SelectedItem="{Binding SelectedCategory}">
+				</Picker>
+				<Picker Title="Product Name" 
+						ItemsSource="{Binding ProductTypes}"
+						SelectedItem="{Binding SelectedType}"
+						IsEnabled="{Binding IsProductTypeEnabled}">
+				</Picker>
+				<Picker Title="Product Form" 
+						ItemsSource="{Binding ProductForms}"
+						SelectedItem="{Binding SelectedForm}"
+						IsEnabled="{Binding IsProductFormEnabled}">
+				</Picker>
+				<Picker Title="Product country" 
+						HorizontalOptions="FillAndExpand"
+						ItemsSource="{Binding ProductCountries}"
+						SelectedItem="{Binding SelectedCountry}"
+						IsEnabled="{Binding IsProductCountryEnabled}">
+				</Picker>
+
             </StackLayout>
         </StackLayout>
-        <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <Label Text="Start developing now" FontSize="Title"/>
-                <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="0,0,0,0"/>
-                <Label FontSize="16" Padding="0,24,0,0">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="Learn more at "/>
-                                <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Button Margin="0,10,0,0" Text="Learn more"
-                        Command="{Binding OpenWebCommand}"
-                        BackgroundColor="{StaticResource Primary}"
-                        TextColor="White" />
-            </StackLayout>
-        </ScrollView>
-    </Grid>
-
+    </ScrollView>
 </ContentPage>
