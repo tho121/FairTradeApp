@@ -25,7 +25,7 @@ namespace FairTradeApp.ViewModels
 				var rate = 1.0f;
 				if (productData.currencyPerUnit < 0)
 				{
-					rate = productData.premium;
+					rate = productData.premium / 100.0f;
 				}
 				else
 				{
