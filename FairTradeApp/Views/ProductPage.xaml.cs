@@ -17,7 +17,10 @@ namespace FairTradeApp.Views
 			var vm = (BindingContext as ViewModels.ProductViewModel);
 			vm.Country = data.country;
 			vm.Product = data.type;
-			vm.Premium = (data.premium.ToString());
+			if (data.currencyPerUnit < 0)
+				vm.Premium = data.premium.ToString() + " %";
+			else
+				vm.Premium = (data.currencyPerUnit * data.premium).ToString() + " CAD/Kg";
 		}
 	
 	}
