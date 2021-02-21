@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using ZXing;
 
 namespace FairTradeApp.ViewModels
 {
@@ -15,4 +16,5 @@ namespace FairTradeApp.ViewModels
 
 		public ICommand OpenWebCommand { get; }
 	}
+
 }
