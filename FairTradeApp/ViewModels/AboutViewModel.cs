@@ -9,6 +9,7 @@ namespace FairTradeApp.ViewModels
 {
 	public class AboutViewModel : BaseViewModel
 	{
+		private List<Database.RowData> currentQuery = new List<Database.RowData>();
 		public AboutViewModel()
 		{
 			Title = "Fair Trade App!!";
@@ -22,29 +23,12 @@ namespace FairTradeApp.ViewModels
 			IsProductCountryEnabled = false;
 			IsProductFormEnabled = false;
 			IsProductTypeEnabled = false;
-
-			//OnSelectedChange = new Command( ()=> {
-
-			//	var datas = Database.Instance().GetRowDatas(selectedCategory, null, null, null);
-
-			//	List<string> types = new List<string>();
-			//	foreach(var data in datas)
-			//	{
-			//		types.Add(data.type);
-			//	}
-
-			//	ProductTypes = types;
-
-			//	});
-
-			
-
 		}
 
 		public void UpdateOptions()
 		{
-			var datas = Database.Instance().GetRowDatas(selectedCategory, selectedType, selectedForm, selectedCountry);
-			var newLists = Database.Instance().GetSelectionsFromRowDatas(datas);
+			currentQuery = Database.Instance().GetRowDatas(selectedCategory, selectedType, selectedForm, selectedCountry);
+			var newLists = Database.Instance().GetSelectionsFromRowDatas(currentQuery);
 
 			IsProductCountryEnabled = false;
 			IsProductFormEnabled = false;
@@ -201,6 +185,9 @@ namespace FairTradeApp.ViewModels
 
 				SetProperty(ref selectedCountry, value);
 				UpdateOptions();
+
+				//TODO: currentQuery[0] is the data you want!
+				//Navigate.Push(new Page(currentQuery[0])) or something here
 			}
 		}
 

@@ -24,8 +24,8 @@ namespace FairTradeApp
 			public string type;
 			public string form;
 			public string country;
-			public string currencyPerUnit;	
-			public int premium;
+			public float currencyPerUnit;	
+			public float premium;
 		};
 
 		public static Database Instance()
