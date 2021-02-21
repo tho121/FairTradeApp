@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace FairTradeApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Premium_calc : ContentPage
+    public partial class PremiumCalcPage : ContentPage
     {
-        public Premium_calc()
+        public PremiumCalcPage()
         {
             InitializeComponent();
         }

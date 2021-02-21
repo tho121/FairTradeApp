@@ -30,8 +30,9 @@
                 <Label Text="{Binding Product}" FontSize="Title" FontFamily=""  HorizontalTextAlignment="Center"/>
                 <Label Text="{Binding Country}" FontSize="Title" FontFamily="Lobster" HorizontalTextAlignment="Center"/>
                 <Label Text="{Binding Premium}" FontSize="Title" FontFamily="Lobster" HorizontalTextAlignment="Center"/>
+				<Entry Text="{Binding Amount}" Placeholder="Amount" IsVisible="True" Keyboard="Numeric"></Entry>
                 <Button Margin="0,10,0,0" Text="Purchase"
-                            Command="{Binding OpenWebCommand}"
+                            Command="{Binding ConvertCommand}"
                             BackgroundColor="{StaticResource Primary}"
                             TextColor="White" />
              </StackLayout>
