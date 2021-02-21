@@ -4,10 +4,12 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace FairTradeApp
 {
 	public partial class App : Application
 	{
+
 
 		public App()
 		{
@@ -15,6 +17,8 @@ namespace FairTradeApp
 
 			DependencyService.Register<MockDataStore>();
 			MainPage = new AppShell();
+			var data = Database.Instance().GetRowData(0);
+			Console.WriteLine(data[0]);
 		}
 
 		protected override void OnStart()
