@@ -45,7 +45,7 @@ namespace FairTradeApp.ViewModels
 			Country = data.country;
 			Product = data.type;
 
-			//TODO: set images here!
+			Image = Conversions.ConvertImage(data.type);
 
 			if (data.currencyPerUnit < 0)
 				Premium = data.premium.ToString() + " %";
