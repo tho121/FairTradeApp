@@ -19,6 +19,9 @@ namespace FairTradeApp
 		private List<float> productPremiumList = new List<float>();
 		private int rowCount = 0;
 
+		private float premiumPaid = 0.0f;
+		private const float levelInterval = 50.0f;
+
 		public struct RowData
 		{
 			public int index;
@@ -364,6 +367,21 @@ namespace FairTradeApp
 			totalLists.Add(newCountries);
 
 			return totalLists;
+		}
+
+		public void AddPremiumAmountPaid(float amountPaid)
+		{
+			premiumPaid += amountPaid;
+		}
+
+		public float GetPremiumAmountPaid()
+		{
+			return premiumPaid;
+		}
+
+		public float GetLevelInterval()
+		{
+			return levelInterval;
 		}
 	}
 }

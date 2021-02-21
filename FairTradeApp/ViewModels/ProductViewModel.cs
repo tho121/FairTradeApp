@@ -24,7 +24,13 @@ namespace FairTradeApp.ViewModels
 
 				var rate = 1.0f;
 				if (productData.currencyPerUnit < 0)
+				{
 					rate = productData.premium;
+				}
+				else
+				{
+					rate = productData.currencyPerUnit * productData.premium;
+				}
 
 				(calc_page.BindingContext as PremiumCalcViewModel).SetData(Amount, rate);
 				await Shell.Current.Navigation.PushModalAsync(calc_page);

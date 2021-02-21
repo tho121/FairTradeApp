@@ -9,13 +9,14 @@ namespace FairTradeApp.ViewModels
 	{
 		public PremiumCalcViewModel()
 		{
-
 		}
 
 		public void SetData(int amount, float rate)
 		{
 			Premium = rate;
 			Premium_res = amount * rate;
+			Database.Instance().AddPremiumAmountPaid(premium_res);
+			Level = "Level: " + Convert.ToInt32(Database.Instance().GetPremiumAmountPaid() / Database.Instance().GetLevelInterval()).ToString();
 		}
 
 		float premium;
@@ -32,6 +33,11 @@ namespace FairTradeApp.ViewModels
 			set { SetProperty(ref premium_res, value); }
 		}
 
-		public ICommand TextChange { get; }
+		string level;
+		public string Level
+		{
+			get { return level; }
+			set { SetProperty(ref level, value); }
+		}
 	}
 }

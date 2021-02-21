@@ -16,5 +16,15 @@ namespace FairTradeApp.Views
         {
             InitializeComponent();
         }
-    }
+
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+
+			var levelInterval = Database.Instance().GetLevelInterval();
+			var value = (Database.Instance().GetPremiumAmountPaid() % levelInterval) / levelInterval;
+
+			PremiumProgress.ProgressTo(value, 1000, Easing.Linear);
+		}
+	}
 }
