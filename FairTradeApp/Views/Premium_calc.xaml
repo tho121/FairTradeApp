@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FairTradeApp.ViewModels"
+             x:Class="FairTradeApp.Views.Premium_calc">
+	<ContentPage.BindingContext>
+        <vm:Premium_calc />
+    </ContentPage.BindingContext>
+	
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Premium calculator"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="Title"/>
+            <Label Text="{Binding Premium}" FontSize="Title" FontFamily="Lobster" HorizontalTextAlignment="Center"/>
+            <Entry TextChanged="{Binding TextChange}" Placeholder="{Binding Weight}" IsVisible="True"></Entry>
+            <Label Text="{Binding Premium_res}" Margin="0,10" HorizontalTextAlignment="Center"></Label>
+            <Button Text="Submit"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
