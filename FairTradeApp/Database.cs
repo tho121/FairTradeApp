@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Reflection;
+using System.Linq;
 
 namespace FairTradeApp
 {
@@ -23,6 +24,8 @@ namespace FairTradeApp
 			public string type;
 			public string form;
 			public string country;
+			public string currencyPerUnit;	
+			public int premium;
 		};
 
 		public static Database Instance()
@@ -297,6 +300,42 @@ namespace FairTradeApp
 			}
 
 			return countries;
+		}
+
+		public List<List<string>> GetSelectionsFromRowDatas(List<Database.RowData> datas)
+		{
+			List<string> newCategories = new List<string>();
+			List<string> newTypes = new List<string>();
+			List<string> newForms = new List<string>();
+			List<string> newCountries = new List<string>();
+
+			foreach (var data in datas)
+			{
+				if(!newCategories.Contains(data.catagory))
+				{
+					newCategories.Add(data.catagory);
+				}
+				if (!newTypes.Contains(data.type))
+				{
+					newTypes.Add(data.type);
+				}
+				if (!newForms.Contains(data.form))
+				{
+					newForms.Add(data.form);
+				}
+				if (!newCountries.Contains(data.country))
+				{
+					newCountries.Add(data.country);
+				}
+			}
+
+			List<List<string>> totalLists = new List<List<string>>();
+			totalLists.Add(newCategories);
+			totalLists.Add(newTypes);
+			totalLists.Add(newForms);
+			totalLists.Add(newCountries);
+
+			return totalLists;
 		}
 	}
 }

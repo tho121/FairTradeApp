@@ -16,6 +16,12 @@ namespace FairTradeApp.ViewModels
 
 			ProductCategories = Database.Instance().GetAllProductCategories();
 			ProductTypes = Database.Instance().GetAllProductTypes();
+			ProductForms = Database.Instance().GetAllProductForms();
+			ProductCountries = Database.Instance().GetAllProductCountries();
+
+			IsProductCountryEnabled = false;
+			IsProductFormEnabled = false;
+			IsProductTypeEnabled = false;
 
 			//OnSelectedChange = new Command( ()=> {
 
@@ -31,6 +37,50 @@ namespace FairTradeApp.ViewModels
 
 			//	});
 
+			
+
+		}
+
+		public void UpdateOptions()
+		{
+			var datas = Database.Instance().GetRowDatas(selectedCategory, selectedType, selectedForm, selectedCountry);
+			var newLists = Database.Instance().GetSelectionsFromRowDatas(datas);
+
+			IsProductCountryEnabled = false;
+			IsProductFormEnabled = false;
+			IsProductTypeEnabled = false;
+
+			if (String.IsNullOrEmpty(selectedCategory))
+			{
+				ProductCategories = newLists[0];
+			}
+			else
+			{
+				IsProductTypeEnabled = true;
+			}
+
+			if (String.IsNullOrEmpty(selectedType))
+			{
+				ProductTypes = newLists[1];
+			}
+			else
+			{
+				IsProductFormEnabled = true;
+			}
+
+			if (String.IsNullOrEmpty(selectedForm))
+			{
+				ProductForms = newLists[2];
+			}
+			else
+			{
+				IsProductCountryEnabled = true;
+			}
+
+			if (String.IsNullOrEmpty(selectedCountry))
+			{
+				ProductCountries = newLists[3];
+			}
 		}
 
 		//categories
@@ -45,22 +95,113 @@ namespace FairTradeApp.ViewModels
 		public string SelectedCategory
 		{
 			get { return selectedCategory; }
-			set { SetProperty(ref selectedCategory, value); }
+			set {
+				ProductTypes.Clear();
+				selectedType = "";
+
+				ProductForms.Clear();
+				selectedForm = "";
+
+				ProductCountries.Clear();
+				selectedCountry = "";
+				SetProperty(ref selectedCategory, value);
+
+				UpdateOptions();
+			}
 		}
 
 		//types
+
+		bool isProductTypeEnabled = false;
+		public bool IsProductTypeEnabled
+		{
+			get { return isProductTypeEnabled; }
+			set { SetProperty(ref isProductTypeEnabled, value); }
+		}
+
 		List<string> productTypes = new List<string>();
 		public List<string> ProductTypes
 		{
 			get { return productTypes; }
-			set { SetProperty(ref productTypes, value); }
+			set {
+				SetProperty(ref productTypes, value); 
+			}
 		}
 
 		string selectedType = null;
 		public string SelectedType
 		{
 			get { return selectedType; }
-			set { SetProperty(ref selectedType, value); }
+			set {
+
+				ProductForms.Clear();
+				selectedForm = "";
+
+				ProductCountries.Clear();
+				selectedCountry = "";
+
+				SetProperty(ref selectedType, value);
+
+				UpdateOptions();
+			}
+		}
+
+		//forms
+
+		bool isProductFormEnabled = false;
+		public bool IsProductFormEnabled
+		{
+			get { return isProductFormEnabled; }
+			set { SetProperty(ref isProductFormEnabled, value); }
+		}
+
+		List<string> productForms = new List<string>();
+		public List<string> ProductForms
+		{
+			get { return productForms; }
+			set { SetProperty(ref productForms, value); }
+		}
+
+		string selectedForm = null;
+		public string SelectedForm
+		{
+			get { return selectedForm; }
+			set {
+
+				ProductCountries.Clear();
+				selectedCountry = "";
+
+				SetProperty(ref selectedForm, value);
+
+				UpdateOptions();
+			}
+		}
+
+		//countries
+
+		bool isProductCountryEnabled = false;
+		public bool IsProductCountryEnabled
+		{
+			get { return isProductCountryEnabled; }
+			set { SetProperty(ref isProductCountryEnabled, value); }
+		}
+
+		List<string> productCountries = new List<string>();
+		public List<string> ProductCountries
+		{
+			get { return productCountries; }
+			set { SetProperty(ref productCountries, value); }
+		}
+
+		string selectedCountry = null;
+		public string SelectedCountry
+		{
+			get { return selectedCountry; }
+			set {
+
+				SetProperty(ref selectedCountry, value);
+				UpdateOptions();
+			}
 		}
 
 		public ICommand OpenWebCommand { get; }

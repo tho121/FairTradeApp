@@ -44,20 +44,20 @@
 				</Picker>
 				<Picker Title="Product Name" 
 						ItemsSource="{Binding ProductTypes}"
-						SelectedItem="{Binding SelectedTypes}">
+						SelectedItem="{Binding SelectedType}"
+						IsEnabled="{Binding IsProductTypeEnabled}">
 				</Picker>
-                <Picker Title="Product Form" >
-                    <Picker.Items>
-                        <x:String>1</x:String>
-                        <x:String>2</x:String>
-                    </Picker.Items>
-                </Picker>
-                <Picker Title="Product country" HorizontalOptions="FillAndExpand">
-                    <Picker.Items>
-                        <x:String>1</x:String>
-                        <x:String>2</x:String>
-                    </Picker.Items>
-                </Picker>
+				<Picker Title="Product Form" 
+						ItemsSource="{Binding ProductForms}"
+						SelectedItem="{Binding SelectedForm}"
+						IsEnabled="{Binding IsProductFormEnabled}">
+				</Picker>
+				<Picker Title="Product country" 
+						HorizontalOptions="FillAndExpand"
+						ItemsSource="{Binding ProductCountries}"
+						SelectedItem="{Binding SelectedCountry}"
+						IsEnabled="{Binding IsProductCountryEnabled}">
+				</Picker>
 
             </StackLayout>
         </ScrollView>
