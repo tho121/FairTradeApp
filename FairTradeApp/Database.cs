@@ -15,6 +15,8 @@ namespace FairTradeApp
 		private List<string> productTypeList = new List<string>();
 		private List<string> productFormList = new List<string>();
 		private List<string> productCountryList = new List<string>();
+		private List<float> productRateList = new List<float>();
+		private List<float> productPremiumList = new List<float>();
 		private int rowCount = 0;
 
 		public struct RowData
@@ -60,7 +62,31 @@ namespace FairTradeApp
 					productCategoryList.Add(values[0].Replace("\"", string.Empty));		//Specific Product Standard column A
 					productTypeList.Add(values[1].Replace("\"", string.Empty));			//Product					column B
 					productFormList.Add(values[3].Replace("\"", string.Empty));			//Form						column D
-					productCountryList.Add(values[4].Replace("\"", string.Empty));		//Country/Region			column E
+					productCountryList.Add(values[4].Replace("\"", string.Empty));      //Country/Region			column E
+
+
+					var rate = values[7].Replace("\"", string.Empty);
+
+					if(String.IsNullOrEmpty(rate) || rate == "-")
+					{
+						productRateList.Add(-1.0f);
+					}
+					else
+					{
+						productRateList.Add(Conversions.ConvertRate(rate));
+					}
+
+					var value = values[9].Replace("\"", string.Empty);
+					
+					if(value.Contains('%'))
+					{
+						value = value.Split('%')[0];
+					}
+
+					//try to parse the value as a float, if not, use 0.0f
+					float fltVal = 0.0f;
+					if (float.TryParse(value, out fltVal)){}
+					productPremiumList.Add(fltVal);
 				}
 
 				rowCount = productCategoryList.Count;
@@ -75,6 +101,8 @@ namespace FairTradeApp
 			data.type = productTypeList[index];
 			data.form = productFormList[index];
 			data.country = productCountryList[index];
+			data.currencyPerUnit = productRateList[index];
+			data.premium = productPremiumList[index];
 
 			return data;
 		}
