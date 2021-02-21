@@ -14,7 +14,7 @@ namespace FairTradeApp.ViewModels
 		public void SetData(int amount, float rate)
 		{
 			Premium = rate;
-			Premium_res = amount * rate;
+			Premium_res = amount * rate / 100;
 			Database.Instance().AddPremiumAmountPaid(premium_res);
 			Level = "Level: " + Convert.ToInt32(Database.Instance().GetPremiumAmountPaid() / Database.Instance().GetLevelInterval()).ToString();
 		}

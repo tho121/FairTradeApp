@@ -42,7 +42,7 @@ namespace FairTradeApp.ViewModels
 		{
 			productData = data;
 
-			Country = data.country;
+			Country = "is produced in: " + data.country;
 			Product = data.type;
 
 			Image = Conversions.ConvertImage(data.type);
