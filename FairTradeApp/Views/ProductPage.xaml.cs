@@ -11,5 +11,14 @@ namespace FairTradeApp.Views
 		{
 			InitializeComponent();
 		}
+
+		public void Init(Database.RowData data)
+		{
+			var vm = (BindingContext as ViewModels.ProductViewModel);
+			vm.Country = data.country;
+			vm.Product = data.type;
+			vm.Premium = (data.premium.ToString());
+		}
+	
 	}
 }

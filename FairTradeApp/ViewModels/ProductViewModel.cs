@@ -26,6 +26,8 @@ namespace FairTradeApp.ViewModels
 			set { SetProperty(ref product, value); }
 		}
 
+		//var vm = (BindingContext as ViewModels.ProductViewModel);
+
 		string country = string.Empty;
 		public string Country
 		{

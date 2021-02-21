@@ -20,6 +20,9 @@ namespace FairTradeApp
 			Database.Instance();
 		}
 
+		
+
+
 		protected override void OnStart()
 		{
 		}

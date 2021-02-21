@@ -187,6 +187,15 @@ namespace FairTradeApp.ViewModels
 				SetProperty(ref selectedCountry, value);
 				UpdateOptions();
 
+				Database.RowData selectedData = currentQuery[0];
+
+				//OpenWebCommand = new Command(async () => await Shell.Current.Navigation.PushModalAsync(new Views.Premium_calc()))
+				var newPage = new Views.ProductPage();
+				newPage.Init(currentQuery[0]);	//country, type, category
+				Shell.Current.Navigation.PushModalAsync(newPage);
+
+
+
 				//TODO: currentQuery[0] is the data you want!
 				//Navigate.Push(new Page(currentQuery[0])) or something here
 			}
