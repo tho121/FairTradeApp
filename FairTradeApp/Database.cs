@@ -54,10 +54,10 @@ namespace FairTradeApp
 					var line = reader.ReadLine();
 					var values = line.Split(',');
 
-					productCategoryList.Add(values[0]);		//Specific Product Standard column A
-					productTypeList.Add(values[1]);			//Product					column B
-					productFormList.Add(values[3]);			//Form						column D
-					productCountryList.Add(values[4]);		//Country/Region			column E
+					productCategoryList.Add(values[0].Replace("\"", string.Empty));		//Specific Product Standard column A
+					productTypeList.Add(values[1].Replace("\"", string.Empty));			//Product					column B
+					productFormList.Add(values[3].Replace("\"", string.Empty));			//Form						column D
+					productCountryList.Add(values[4].Replace("\"", string.Empty));		//Country/Region			column E
 				}
 
 				rowCount = productCategoryList.Count;

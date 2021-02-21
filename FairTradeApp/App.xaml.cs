@@ -17,8 +17,7 @@ namespace FairTradeApp
 
 			DependencyService.Register<MockDataStore>();
 			MainPage = new AppShell();
-			var data = Database.Instance().GetRowData(0);
-			Console.WriteLine(data[0]);
+			Database.Instance();
 		}
 
 		protected override void OnStart()

@@ -38,18 +38,14 @@
                                         VerticalOptions="CenterAndExpand"
                                         HorizontalOptions="CenterAndExpand"/>
                 <zxing:ZXingDefaultOverlay TopText="Align the barcode within the frame"/>
-                <Picker Title="Product Standard"  >
-                    <Picker.Items>
-                        <x:String>1</x:String>
-                        <x:String>2</x:String>
-                    </Picker.Items>
-                </Picker>
-                <Picker Title="Product Name" >
-                    <Picker.Items>
-                        <x:String>1</x:String>
-                        <x:String>2</x:String>
-                    </Picker.Items>
-                </Picker>
+				<Picker Title="Product Standard"  
+						ItemsSource="{Binding ProductCategories}"
+						SelectedItem="{Binding SelectedCategory}">
+				</Picker>
+				<Picker Title="Product Name" 
+						ItemsSource="{Binding ProductTypes}"
+						SelectedItem="{Binding SelectedTypes}">
+				</Picker>
                 <Picker Title="Product Form" >
                     <Picker.Items>
                         <x:String>1</x:String>
