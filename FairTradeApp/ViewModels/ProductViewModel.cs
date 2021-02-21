@@ -14,7 +14,7 @@ namespace FairTradeApp.ViewModels
 			Country = "Panama";
 			Image = "banana.png";
 			Premium = "Premium: 15 %";
-			OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
+			OpenWebCommand = new Command(async () => await Shell.Current.Navigation.PushModalAsync(new Views.Premium_calc())) ;
 		}
 
 		public ICommand OpenWebCommand { get; }
