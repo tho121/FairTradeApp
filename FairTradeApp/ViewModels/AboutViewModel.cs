@@ -12,11 +12,8 @@ namespace FairTradeApp.ViewModels
 		private List<Database.RowData> currentQuery = new List<Database.RowData>();
 		public AboutViewModel()
 		{
-			Product = "Banana";
 			Title = "Fair Trade App!!";
-			Country = "Panama";
-			Image = "banana.png";
-			Premium = "Premium: 15 %";
+			
 			OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
 
 			ProductCategories = Database.Instance().GetAllProductCategories();

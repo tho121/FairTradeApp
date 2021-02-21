@@ -58,6 +58,6 @@
 				</Picker>
 
             </StackLayout>
-        </ScrollView>
-    </Grid>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
